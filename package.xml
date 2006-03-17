@@ -16,7 +16,7 @@
     </maintainer>
   </maintainers>
   <release>
-    <version>0.0.1</version>
+    <version>0.1.0</version>
     <date>2006-03-17</date>
     <license>PHP License 3.0</license>
     <state>alpha</state>
@@ -78,7 +78,7 @@
   </release>
 	<changelog>
     <release>
-    <version>0.0.1</version>
+    <version>0.1.0</version>
     <date>2006-03-17</date>
     <state>alpha</state>
     <notes>This is the initial import.
