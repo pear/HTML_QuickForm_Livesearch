@@ -16,12 +16,13 @@ This type of livesearch is useful when you have a form with a dropdown list with
         </maintainer>
     </maintainers>
     <release>
-        <version>0.2.0</version>
+        <version>0.1.5</version>
         <date>2006-04-04</date>
         <license>PHP License 3.0</license>
         <state>alpha</state>
         <notes>
 Changes:
+Now you can set the buffer time
 Modified Example added an option to set the buffer time
 Some code style issue fix
 Now when a key is pressed the value is reset
