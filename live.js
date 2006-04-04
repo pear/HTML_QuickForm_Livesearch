@@ -16,25 +16,25 @@
 // | Bitflux GmbH <devel@bitflux.ch>                                      |
 // | http://blog.bitflux.ch/wiki/LiveSearch/#Source_Code                  |
 // +----------------------------------------------------------------------+
-// $Id: live.js,v 1.1.1.1 2006-03-17 14:27:59 thesee Exp $
+// $Id: live.js,v 1.2 2006-04-04 20:13:46 thesee Exp $
 
 function liveSearchHover(el)
 {
-        highlight = document.getElementById("LSHighlight");
-        if (highlight) {
-            highlight.removeAttribute("id");
-        }
-        el.parentNode.setAttribute("id","LSHighlight");
+    highlight = document.getElementById("LSHighlight");
+    if (highlight) {
+        highlight.removeAttribute("id");
+    }
+    el.parentNode.setAttribute("id","LSHighlight");
 }
 
 function liveSearchClicked (valore, text, elementId, realName)
 {
-        highlight = document.getElementById("LSHighlight");
-        if (highlight) {
-            highlight.removeAttribute("id");
-        }
-        document.getElementById(elementId).value = text;
-        document.getElementById(realName).value = valore;
+    highlight = document.getElementById("LSHighlight");
+    if (highlight) {
+        highlight.removeAttribute("id");
+    }
+    document.getElementById(elementId).value = text;
+    document.getElementById(realName).value = valore;
 }
 
 function liveSearchHide (GetResult)
@@ -48,15 +48,16 @@ function liveSearchHide (GetResult)
 
 function liveSearchKeyPress (Obj, event, GetResult, GetShadow, elementId , realName, SearchZero )
 {
-	isIE = false;
-  if (navigator.userAgent.indexOf("Safari") > 0) {
-          //
-  } else if (navigator.product == "Gecko") {
-  //
-  } else {
-  isIE = true;
-  }
+    isIE = false;
+    if (navigator.userAgent.indexOf("Safari") > 0) {
+        //
+    } else if (navigator.product == "Gecko") {
+        //
+    } else {
+        isIE = true;
+    }
 //    if (event.keyCode == 9 )
+    document.getElementById(realName).value = '';
     if (event.keyCode == 13 ) {
 
         liveSearchHide(GetResult);
@@ -74,7 +75,7 @@ function liveSearchKeyPress (Obj, event, GetResult, GetShadow, elementId , realN
         if (highlight) {
             highlight.setAttribute("id","LSHighlight");
             document.getElementById(elementId).value = highlight.firstChild.getAttribute("text");
-    				document.getElementById(realName).value = highlight.firstChild.getAttribute("value");
+            document.getElementById(realName).value = highlight.firstChild.getAttribute("value");
         }
        if (!isIE) { event.preventDefault(); }
     }
@@ -91,7 +92,7 @@ function liveSearchKeyPress (Obj, event, GetResult, GetShadow, elementId , realN
         if (highlight) {
                 highlight.setAttribute("id","LSHighlight");
             document.getElementById(elementId).value = highlight.firstChild.getAttribute("text");
-    				document.getElementById(realName).value = highlight.firstChild.getAttribute("value");
+            document.getElementById(realName).value = highlight.firstChild.getAttribute("value");
         }
        if (!isIE) { event.preventDefault(); }
     }
@@ -103,7 +104,7 @@ function liveSearchKeyPress (Obj, event, GetResult, GetShadow, elementId , realN
         }
         document.getElementById(GetResult).style.display = "none";
     } else if (Obj.value.length == 0 && SearchZero == 1) {
-    	searchRequest(Obj, elementId);
+        searchRequest(Obj, elementId);
     } else if (Obj.value.length > 0)
-    	searchRequest(Obj, elementId);
+        searchRequest(Obj, elementId);
 }

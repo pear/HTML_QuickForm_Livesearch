@@ -273,21 +273,19 @@ callback.'.$this->_options['elementId'].' = function(result) {
 
 ';
 					if (!defined('HTML_QUICKFORM_JS_INIT_EXISTS')) {
-						$scriptLoad .= <<<EOS
+						$scriptLoad .= '
 
-<script type='text/javascript'>//<![CDATA[
+<script type="text/javascript">//<![CDATA[
 	var remoteLiveSearch = new livesearch(callback);
-	remoteLiveSearch.dispatcher.queue = 'rls';
-	HTML_AJAX.queues['rls'] = new HTML_AJAX_Queue_Interval_SingleBuffer(350);
+	remoteLiveSearch.dispatcher.queue = \'rls\';
+	HTML_AJAX.queues[\'rls\'] = new HTML_AJAX_Queue_Interval_SingleBuffer('.(int)$this->_options['buffer'].');
 //]]>
 </script>
-
-EOS;
+';
 						define('HTML_QUICKFORM_JS_INIT_EXISTS', true);
 					}
-            $scriptLoad .= <<<EOS
-<input type="hidden" name="$oldName" id="$oldName" value="{$this->_hidden_value}">\n
-EOS;
+            $scriptLoad .= '
+<input type="hidden" name="'.$oldName.'" id="'.$oldName.'" value="'.$this->_hidden_value.'">'."\n";
 
 
         }
