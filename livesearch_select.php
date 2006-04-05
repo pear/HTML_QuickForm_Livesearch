@@ -137,18 +137,22 @@ class HTML_QuickForm_LiveSearch_Select extends HTML_QuickForm_text
             $style = 'display: block;';//default
         } else {
             $style = ' style="'.$this->_options['style'].'" ';
+        }
         if ($this->_options['divstyle'] == '') {
             $divstyle = ' class="divstyle" ';
         } else {
             $divstyle =  ' class="'.$this->_options['divstyle'].'" ';
+        }
         if ($this->_options['ulstyle'] == '') {
             $ulstyle = ' class="ulstyle" ';
         } else {
             $ulstyle =  ' class="'.$this->_options['ulstyle'].'" ';
+        }
         if ($this->_options['listyle'] == '') {
             $listyle = ' class="listyle" ';
         } else {
             $listyle =  ' class="'.$this->_options['listyle'].'" ';
+        }
         if ($this->_options['searchZeroLength'] == 1) {
         	$zeroLength = 1;
         } else {
