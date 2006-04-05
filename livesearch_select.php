@@ -133,26 +133,27 @@ class HTML_QuickForm_LiveSearch_Select extends HTML_QuickForm_text
 //             $getParam = "&".$this->_options['getparameters']."&class=".$this->getName()."ObjLS";
 //         else
 //             $getParam = "&class=".$this->getName()."ObjLS";
-        if ($this->_options['style'] == '')
+        if ($this->_options['style'] == '') {
             $style = 'display: block;';//default
-        else
+        } else {
             $style = ' style="'.$this->_options['style'].'" ';
-        if ($this->_options['divstyle'] == '')
+        if ($this->_options['divstyle'] == '') {
             $divstyle = ' class="divstyle" ';
-        else
+        } else {
             $divstyle =  ' class="'.$this->_options['divstyle'].'" ';
-        if ($this->_options['ulstyle'] == '')
+        if ($this->_options['ulstyle'] == '') {
             $ulstyle = ' class="ulstyle" ';
-        else
+        } else {
             $ulstyle =  ' class="'.$this->_options['ulstyle'].'" ';
-        if ($this->_options['listyle'] == '')
+        if ($this->_options['listyle'] == '') {
             $listyle = ' class="listyle" ';
-        else
+        } else {
             $listyle =  ' class="'.$this->_options['listyle'].'" ';
-        if ($this->_options['searchZeroLength'] == 1)
+        if ($this->_options['searchZeroLength'] == 1) {
         	$zeroLength = 1;
-        else
+        } else {
         	$zeroLength = 0;
+        }
         $this->updateAttributes(array(
                                       'onkeyup' => 'javascript:liveSearchKeyPress(this, event, \''.$this->getName().'Result\', \'target_'.$this->_options['elementId'].'\', \''.$this->_options['elementId'].'\', \''.$oldName.'\', '.$zeroLength.');',//'javascript:'.$this->getName().'ObjLS.liveSearchKeyPress(this, event);disable();',
                                       'onblur' => 'javascript:liveSearchHide(\''.$this->getName().'Result\');',
