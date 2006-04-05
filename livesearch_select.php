@@ -63,12 +63,12 @@ class HTML_QuickForm_LiveSearch_Select extends HTML_QuickForm_text
      */
     function HTML_QuickForm_LiveSearch_Select($elementName = null, $elementLabel = null, $options = null, $attributes = null)
     {
-      $this->HTML_QuickForm_text($elementName, $elementLabel, $attributes);
-      $this->_persistantFreeze = true;
-      $this->_type = 'livesearch_select';
-      if (isset($options)) {
-          $this->setOptions($options);
-      }
+        $this->HTML_QuickForm_text($elementName, $elementLabel, $attributes);
+        $this->_persistantFreeze = true;
+        $this->_type = 'livesearch_select';
+        if (isset($options)) {
+            $this->setOptions($options);
+        }
     } //end constructor
     /**
      * Gets the private name for the element
@@ -97,8 +97,8 @@ class HTML_QuickForm_LiveSearch_Select extends HTML_QuickForm_text
         $this->_value = call_user_func($this->_options['callback'], $this->_options['dbh'], $value);
         $this->updateAttributes(array(
                                       'value' => $this->_value
-                                     )
-                               );
+                                      )
+                                );
     }
 
     /**
@@ -154,9 +154,9 @@ class HTML_QuickForm_LiveSearch_Select extends HTML_QuickForm_text
             $listyle =  ' class="'.$this->_options['listyle'].'" ';
         }
         if ($this->_options['searchZeroLength'] == 1) {
-        	$zeroLength = 1;
+            $zeroLength = 1;
         } else {
-        	$zeroLength = 0;
+            $zeroLength = 0;
         }
         $this->updateAttributes(array(
                                       'onkeyup' => 'javascript:liveSearchKeyPress(this, event, \''.$this->getName().'Result\', \'target_'.$this->_options['elementId'].'\', \''.$this->_options['elementId'].'\', \''.$oldName.'\', '.$zeroLength.');',//'javascript:'.$this->getName().'ObjLS.liveSearchKeyPress(this, event);disable();',
@@ -171,78 +171,78 @@ class HTML_QuickForm_LiveSearch_Select extends HTML_QuickForm_text
         } else {
             $liveform .= "
 <div{$divstyle}id=\"".$this->getName()."Result\">
-	<ul{$ulstyle}id=\"target_".$this->_options['elementId']."\">
-	    <li".$listyle."> </li>
-	</ul>
+    <ul{$ulstyle}id=\"target_".$this->_options['elementId']."\">
+        <li".$listyle."> </li>
+    </ul>
 </div>";
             if (!defined('HTML_QUICKFORM_LIVESEARCH_EXISTS')) {
                 $scriptLoad .= <<<EOS
 <style type="text/css">
 <!--
 .divstyle {
-	position: absolute;
-	background-color: #aaa;
-	z-index: 1;
-	min-width: 140px;
-	margin: 1px 0px 2px 0px;
-	padding: 0px;
-	float:left;
-	clear:left;
-	background: url(shadowAlpha.png) no-repeat bottom right !important;
-	background: url(shadow.gif) no-repeat bottom right;
-	margin: 10px 0 10px 10px !important;
-	padding: 0px;
-	display: none;
+    position: absolute;
+    background-color: #aaa;
+    z-index: 1;
+    min-width: 140px;
+    margin: 1px 0px 2px 0px;
+    padding: 0px;
+    float:left;
+    clear:left;
+    background: url(shadowAlpha.png) no-repeat bottom right !important;
+    background: url(shadow.gif) no-repeat bottom right;
+    margin: 10px 0 10px 10px !important;
+    padding: 0px;
+    display: none;
 }
 
 .ulstyle {
-	list-style-type: none;
-	position: relative;
-	right: 0px;
-	z-index: 1;
-	margin: 0px;
-	padding: 0px;
+    list-style-type: none;
+    position: relative;
+    right: 0px;
+    z-index: 1;
+    margin: 0px;
+    padding: 0px;
 }
 
 .listyle {
-	text-indent: -20px;
-	z-index: 1;
-	padding: 0px 15px 3px 20px;
-	padding-bottom: 2px;
-	padding-top: 2px;
-	line-height:15px;
-	margin-bottom: 0px;
+    text-indent: -20px;
+    z-index: 1;
+    padding: 0px 15px 3px 20px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    line-height:15px;
+    margin-bottom: 0px;
 }
 .outerUl {
-	list-style-type: none;
-	position: relative;
-	right: 1px;
-	z-index: 1;
-	margin: 0px;
-	padding: 0px;
-	background-color: #FFFFFF;
-	color: inherit;
-	bottom:6px;
-	right: 6px;
-	border: 1px solid #999999;
-	padding:4px;
-	margin: 0px 0px 0px 0px;
-	text-indent: -20px;
-	padding: 0px 15px 3px 20px;
-	margin-bottom: -5px;
-	margin-top: 0px;
-	padding-top: 0px;
-	margin: 0px;
-	padding: 0px;
+    list-style-type: none;
+    position: relative;
+    right: 1px;
+    z-index: 1;
+    margin: 0px;
+    padding: 0px;
+    background-color: #FFFFFF;
+    color: inherit;
+    bottom:6px;
+    right: 6px;
+    border: 1px solid #999999;
+    padding:4px;
+    margin: 0px 0px 0px 0px;
+    text-indent: -20px;
+    padding: 0px 15px 3px 20px;
+    margin-bottom: -5px;
+    margin-top: 0px;
+    padding-top: 0px;
+    margin: 0px;
+    padding: 0px;
 }
 .outerLi {
-	text-indent: -20px;
-	z-index: 1;
-	padding: 0px 15px 3px 20px;
-	padding-bottom: 2px;
-	padding-top: 2px;
-	line-height:15px;
-	margin-bottom: 0px;
+    text-indent: -20px;
+    z-index: 1;
+    padding: 0px 15px 3px 20px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    line-height:15px;
+    margin-bottom: 0px;
 }
 // -->
 </style>
@@ -250,7 +250,7 @@ class HTML_QuickForm_LiveSearch_Select extends HTML_QuickForm_text
 <script type='text/javascript'>//<![CDATA[
 callback = {};
 function searchRequest(searchBox, callfunc) {
-   eval("remoteLiveSearch."+callfunc+"(searchBox.value)");
+    eval("remoteLiveSearch."+callfunc+"(searchBox.value)");
 }
 //]]>
 </script>
@@ -262,40 +262,40 @@ EOS;
             $scriptLoad .= '
 <script type="text/javascript">//<![CDATA[
 callback.'.$this->_options['elementId'].' = function(result) {
-				var  res = document.getElementById(\''.$this->getName().'Result\');
-        res.style.display = "block";
-        var out = "<?xml version=\'1.0\' encoding=\'utf-8\'  ?><ul class=\"outerUl\" >";
-        for(var i in result) {
-            if (i != \'______array\') {
-                out += "<li class=\"outerLi\"><a href=\"#\" value=\""+i+"\" text=\""+result[i]+"\" onmouseover=\"liveSearchHover(this);\" onmousedown=\"liveSearchClicked(this.getAttribute(\'value\'), this.getAttribute(\'text\'), \''.$this->_options['elementId'].'\', \''.$oldName.'\');\">"+result[i]+"</a></li>";
-            }
+    var  res = document.getElementById(\''.$this->getName().'Result\');
+    res.style.display = "block";
+    var out = "<?xml version=\'1.0\' encoding=\'utf-8\'  ?><ul class=\"outerUl\" >";
+    for(var i in result) {
+        if (i != \'______array\') {
+            out += "<li class=\"outerLi\"><a href=\"#\" value=\""+i+"\" text=\""+result[i]+"\" onmouseover=\"liveSearchHover(this);\" onmousedown=\"liveSearchClicked(this.getAttribute(\'value\'), this.getAttribute(\'text\'), \''.$this->_options['elementId'].'\', \''.$oldName.'\');\">"+result[i]+"</a></li>";
         }
-        out += "</ul>";
-        document.getElementById(\'target_'.$this->_options['elementId'].'\').innerHTML = out;
     }
+    out += "</ul>";
+    document.getElementById(\'target_'.$this->_options['elementId'].'\').innerHTML = out;
+}
 //]]>
 </script>
 
 ';
-					if (!defined('HTML_QUICKFORM_JS_INIT_EXISTS')) {
-						$scriptLoad .= '
+                    if (!defined('HTML_QUICKFORM_JS_INIT_EXISTS')) {
+                        $scriptLoad .= '
 
 <script type="text/javascript">//<![CDATA[
-	var remoteLiveSearch = new livesearch(callback);
-	remoteLiveSearch.dispatcher.queue = \'rls\';
-	HTML_AJAX.queues[\'rls\'] = new HTML_AJAX_Queue_Interval_SingleBuffer('.(int)$this->_options['buffer'].');
+    var remoteLiveSearch = new livesearch(callback);
+    remoteLiveSearch.dispatcher.queue = \'rls\';
+    HTML_AJAX.queues[\'rls\'] = new HTML_AJAX_Queue_Interval_SingleBuffer('.(int)$this->_options['buffer'].');
 //]]>
 </script>
 ';
-						define('HTML_QUICKFORM_JS_INIT_EXISTS', true);
-					}
+                        define('HTML_QUICKFORM_JS_INIT_EXISTS', true);
+                    }
             $scriptLoad .= '
 <input type="hidden" name="'.$oldName.'" id="'.$oldName.'" value="'.$this->_hidden_value.'">'."\n";
 
 
         }
     return $scriptLoad.parent::toHtml().$liveform;
-     }// end func toHtml
+    }// end func toHtml
 
     // }}}
 } // end class HTML_QuickForm_LiveSearch_Select
