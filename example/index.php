@@ -21,21 +21,23 @@ $form->addElement('livesearch_select', 'Nome', 'Example: Live Select, <br>select
                       'listyle' => '',//optional class for style not set or '' ==> default
                       'searchZeroLength' => 1, //enable the search request with 0 length keyword
                       'buffer' => 350 //set the interval single buffer send time (ms)
-                      )
+                      ),
+                      array('size' => '50')
                   );
 $form->addElement('livesearch_select', 'Nome2', 'Example2: Live Select, <br>select a name and return an ID <br>(useful for dropdown lists)',
                  array(
                       'elementId' => 'search2', //element id
                       'callback' => array('Test', 'getTestName2'),//callback function to retrieve ID from selection
 //                       'dbh' => $db,//optional handler for callback function
-                      )
+                      ),
+                  'size=30'
                   );
 $form->addElement('text', 'required_field', 'errorTest', 'Some data:');
 $form->addElement('submit', null, 'View', array('id'=>'submit'));
 $form->addRule('required_field', 'Data required', 'required', null, 'server');
 $form->addRule('Nome', 'Data required', 'required', null, 'server');
 if ($form->validate()) {
-	echo"<pre>";print_r($_POST);echo"</pre>";die();
+  echo"<pre>";print_r($_POST);echo"</pre>";die();
   echo"<pre>";print_r('REDIRECT(stopped obviously) TO: http://www.example.com/'.$form->exportValue('Nome'));echo"</pre>";die();
   header('Location: http://www.example.com/'.$form->exportValue('Nome'));
 }

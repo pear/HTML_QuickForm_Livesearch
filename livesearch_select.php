@@ -125,6 +125,13 @@ class HTML_QuickForm_LiveSearch_Select extends HTML_QuickForm_text
     function toHtml()
     {
         $oldName = $this->getName();
+        $liveform = '';
+        $scriptLoad = '';
+        $style = 'display: block;';
+        $divstyle = ' class="divstyle" ';
+        $ulstyle = ' class="ulstyle" ';
+        $listyle = ' class="listyle" ';
+        $zeroLength = 0;
         $this->updateAttributes(array(
                                       'name' => $this->getPrivateName($oldName),
                                      )
@@ -133,27 +140,19 @@ class HTML_QuickForm_LiveSearch_Select extends HTML_QuickForm_text
 //             $getParam = "&".$this->_options['getparameters']."&class=".$this->getName()."ObjLS";
 //         else
 //             $getParam = "&class=".$this->getName()."ObjLS";
-        if ($this->_options['style'] == '') {
-            $style = 'display: block;';//default
-        } else {
+        if (isset($this->_options['style']) AND $this->_options['style'] != '') {
             $style = ' style="'.$this->_options['style'].'" ';
         }
-        if ($this->_options['divstyle'] == '') {
-            $divstyle = ' class="divstyle" ';
-        } else {
+        if (isset($this->_options['divstyle']) AND $this->_options['divstyle'] != '') {
             $divstyle =  ' class="'.$this->_options['divstyle'].'" ';
         }
-        if ($this->_options['ulstyle'] == '') {
-            $ulstyle = ' class="ulstyle" ';
-        } else {
+        if (isset($this->_options['ulstyle']) AND $this->_options['ulstyle'] != '') {
             $ulstyle =  ' class="'.$this->_options['ulstyle'].'" ';
         }
-        if ($this->_options['listyle'] == '') {
-            $listyle = ' class="listyle" ';
-        } else {
+        if (isset($this->_options['listyle']) AND $this->_options['listyle'] != '') {
             $listyle =  ' class="'.$this->_options['listyle'].'" ';
         }
-        if ($this->_options['searchZeroLength'] == 1) {
+        if (isset($this->_options['searchZeroLength']) AND $this->_options['searchZeroLength'] == 1) {
             $zeroLength = 1;
         } else {
             $zeroLength = 0;
@@ -176,7 +175,7 @@ class HTML_QuickForm_LiveSearch_Select extends HTML_QuickForm_text
     </ul>
 </div>";
             if (!defined('HTML_QUICKFORM_LIVESEARCH_EXISTS')) {
-                $scriptLoad .= <<<EOS
+                $scriptLoad = <<<EOS
 <style type="text/css">
 <!--
 .divstyle {
