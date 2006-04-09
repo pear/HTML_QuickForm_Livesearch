@@ -168,12 +168,12 @@ class HTML_QuickForm_LiveSearch_Select extends HTML_QuickForm_text
         if ($this->_flagFrozen) {
             $liveform = '';
         } else {
-            $liveform .= "
-<div{$divstyle}id=\"".$this->getName()."Result\">
-    <ul{$ulstyle}id=\"target_".$this->_options['elementId']."\">
-        <li".$listyle."> </li>
+            $liveform .= '
+<div'.$divstyle.'id="'.$this->getName().'Result">
+    <ul'.$ulstyle.'id="target_'.$this->_options['elementId'].'">
+        <li'.$listyle.'> </li>
     </ul>
-</div>";
+</div>';
             if (!defined('HTML_QUICKFORM_LIVESEARCH_EXISTS')) {
                 $scriptLoad = <<<EOS
 <style type="text/css">
