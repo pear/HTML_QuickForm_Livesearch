@@ -94,11 +94,18 @@ class HTML_QuickForm_LiveSearch_Select extends HTML_QuickForm_text
     function setValue($value)
     {
         $this->_hidden_value = $value;
-        $this->_value = call_user_func($this->_options['callback'], $this->_options['dbh'], $value);
-        $this->updateAttributes(array(
-                                      'value' => $this->_value
-                                      )
-                                );
+        if (isset($this->_options['callback']) AND is_callable($this->_options['callback']) ) {
+            if (isset($this->_options['dbh']) ) {
+                $dbh = $this->_options['dbh'];
+            } else {
+                $dbh = NULL;
+            }
+            $this->_value = call_user_func($this->_options['callback'], $dbh, $value);
+            $this->updateAttributes(array(
+                                        'value' => $this->_value
+                                        )
+                                    );
+        }
     }
 
     /**

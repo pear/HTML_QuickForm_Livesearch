@@ -16,20 +16,18 @@ This type of livesearch is useful when you have a form with a dropdown list with
         </maintainer>
     </maintainers>
     <release>
-        <version>0.1.5</version>
-        <date>2006-04-04</date>
+        <version>0.2.0</version>
+        <date>2006-05-25</date>
         <license>PHP License 3.0</license>
-        <state>alpha</state>
+        <state>beta</state>
         <notes>
 Changes:
-Now you can set the buffer time
-Modified Example added an option to set the buffer time
-Some code style issue fix
-Now when a key is pressed the value is reset
-* todo Do not reset the value when the key is an arrow or a function button
+Single quote issue on liveform variable
+Added attributes on example.
+Style coding issue
+The id value is not reset when the keypressed is left or right arrow
+* todo: Do not reset the value when the key is a button that do not alter the text.
 * todo: Set up the options of an alternative element when jscript disabled
-
-* todo: release the Livesearch_Text element.
         </notes>
         <deps>
             <dep type="pkg" rel="has" optional="no">PEAR</dep>
@@ -76,6 +74,22 @@ Now when a key is pressed the value is reset
         </filelist>
     </release>
     <changelog>
+        <release>
+            <version>0.1.5</version>
+            <date>2006-04-04</date>
+            <license>PHP License 3.0</license>
+            <state>alpha</state>
+            <notes>
+Changes:
+Now you can set the buffer time
+Modified Example added an option to set the buffer time
+Some code style issue fix
+Now when a key is pressed the value is reset
+* todo Do not reset the value when the key is an arrow or a function button
+* todo: Set up the options of an alternative element when jscript disabled
+* todo: release the Livesearch_Text element.
+            </notes>
+        </release>
         <release>
             <version>0.1.0</version>
             <date>2006-03-17</date>

@@ -16,7 +16,7 @@
 // | Bitflux GmbH <devel@bitflux.ch>                                      |
 // | http://blog.bitflux.ch/wiki/LiveSearch/#Source_Code                  |
 // +----------------------------------------------------------------------+
-// $Id: live.js,v 1.2 2006-04-04 20:13:46 thesee Exp $
+// $Id: live.js,v 1.3 2006-05-25 09:24:41 thesee Exp $
 
 function liveSearchHover(el)
 {
@@ -56,55 +56,58 @@ function liveSearchKeyPress (Obj, event, GetResult, GetShadow, elementId , realN
     } else {
         isIE = true;
     }
-//    if (event.keyCode == 9 )
-    document.getElementById(realName).value = '';
-    if (event.keyCode == 13 ) {
-
+    if (event.keyCode == 37 || event.keyCode == 39) {
         liveSearchHide(GetResult);
-    }
-    if (event.keyCode == 40 )
-    //KEY DOWN
-    {
-        highlight = document.getElementById("LSHighlight");
-        if (!highlight) {
-            highlight = document.getElementById(GetShadow).firstChild.firstChild;
-        } else {
-            highlight.removeAttribute("id");
-            highlight = highlight.nextSibling;
+    } else {
+        document.getElementById(realName).value = '';
+        if (event.keyCode == 13 ) {
+
+            liveSearchHide(GetResult);
         }
-        if (highlight) {
-            highlight.setAttribute("id","LSHighlight");
-            document.getElementById(elementId).value = highlight.firstChild.getAttribute("text");
-            document.getElementById(realName).value = highlight.firstChild.getAttribute("value");
-        }
-       if (!isIE) { event.preventDefault(); }
-    }
-    //KEY UP
-    else if (event.keyCode == 38 ) {
-        highlight = document.getElementById("LSHighlight");
-        if (!highlight) {
-            highlight = document.getElementById(GetResult).firstChild.firstChild.lastChild;
-        }
-        else {
-            highlight.removeAttribute("id");
-            highlight = highlight.previousSibling;
-        }
-        if (highlight) {
+        if (event.keyCode == 40 )
+        //KEY DOWN
+        {
+            highlight = document.getElementById("LSHighlight");
+            if (!highlight) {
+                highlight = document.getElementById(GetShadow).firstChild.firstChild;
+            } else {
+                highlight.removeAttribute("id");
+                highlight = highlight.nextSibling;
+            }
+            if (highlight) {
                 highlight.setAttribute("id","LSHighlight");
-            document.getElementById(elementId).value = highlight.firstChild.getAttribute("text");
-            document.getElementById(realName).value = highlight.firstChild.getAttribute("value");
+                document.getElementById(elementId).value = highlight.firstChild.getAttribute("text");
+                document.getElementById(realName).value = highlight.firstChild.getAttribute("value");
+            }
+        if (!isIE) { event.preventDefault(); }
         }
-       if (!isIE) { event.preventDefault(); }
+        //KEY UP
+        else if (event.keyCode == 38 ) {
+            highlight = document.getElementById("LSHighlight");
+            if (!highlight) {
+                highlight = document.getElementById(GetResult).firstChild.firstChild.lastChild;
+            }
+            else {
+                highlight.removeAttribute("id");
+                highlight = highlight.previousSibling;
+            }
+            if (highlight) {
+                    highlight.setAttribute("id","LSHighlight");
+                document.getElementById(elementId).value = highlight.firstChild.getAttribute("text");
+                document.getElementById(realName).value = highlight.firstChild.getAttribute("value");
+            }
+        if (!isIE) { event.preventDefault(); }
+        }
+        //ESC
+        else if (event.keyCode == 27) {
+            highlight = document.getElementById("LSHighlight");
+            if (highlight) {
+                highlight.removeAttribute("id");
+            }
+            document.getElementById(GetResult).style.display = "none";
+        } else if (Obj.value.length == 0 && SearchZero == 1) {
+            searchRequest(Obj, elementId);
+        } else if (Obj.value.length > 0)
+            searchRequest(Obj, elementId);
     }
-    //ESC
-    else if (event.keyCode == 27) {
-        highlight = document.getElementById("LSHighlight");
-        if (highlight) {
-            highlight.removeAttribute("id");
-        }
-        document.getElementById(GetResult).style.display = "none";
-    } else if (Obj.value.length == 0 && SearchZero == 1) {
-        searchRequest(Obj, elementId);
-    } else if (Obj.value.length > 0)
-        searchRequest(Obj, elementId);
 }
