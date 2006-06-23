@@ -16,16 +16,13 @@ This type of livesearch is useful when you have a form with a dropdown list with
         </maintainer>
     </maintainers>
     <release>
-        <version>0.2.0</version>
-        <date>2006-05-25</date>
+        <version>0.3.0</version>
+        <date>2006-06-23</date>
         <license>PHP License 3.0</license>
         <state>beta</state>
         <notes>
 Changes:
-Single quote issue on liveform variable
-Added attributes on example.
-Style coding issue
-The id value is not reset when the keypressed is left or right arrow
+Solved bug with frozen element.
 * todo: Do not reset the value when the key is a button that do not alter the text.
 * todo: Set up the options of an alternative element when jscript disabled
         </notes>
@@ -74,6 +71,21 @@ The id value is not reset when the keypressed is left or right arrow
         </filelist>
     </release>
     <changelog>
+        <release>
+            <version>0.2.0</version>
+            <date>2006-05-25</date>
+            <license>PHP License 3.0</license>
+            <state>beta</state>
+            <notes>
+Changes:
+Single quote issue on liveform variable
+Added attributes on example.
+Style coding issue
+The id value is not reset when the keypressed is left or right arrow
+* todo: Do not reset the value when the key is a button that do not alter the text.
+* todo: Set up the options of an alternative element when jscript disabled
+            </notes>
+        </release>
         <release>
             <version>0.1.5</version>
             <date>2006-04-04</date>
