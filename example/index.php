@@ -37,9 +37,8 @@ $form->addElement('submit', null, 'View', array('id'=>'submit'));
 $form->addRule('required_field', 'Data required', 'required', null, 'server');
 $form->addRule('Nome', 'Data required', 'required', null, 'server');
 if ($form->validate()) {
-  echo"<pre>";print_r($_POST);echo"</pre>";die();
-  echo"<pre>";print_r('REDIRECT(stopped obviously) TO: http://www.example.com/'.$form->exportValue('Nome'));echo"</pre>";die();
-  header('Location: http://www.example.com/'.$form->exportValue('Nome'));
+  echo"<pre>";print_r($_POST);echo"</pre>";
+  $form->freeze();
 }
 // Output the form
 ?>
