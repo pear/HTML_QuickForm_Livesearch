@@ -39,6 +39,14 @@ class HTML_QuickForm_LiveSearch_Select extends HTML_QuickForm_text
     var $_options = array();
 
     /**
+     * Original name of element
+     *
+     * @var       string
+     * @access    private
+     */
+    var $realName = '';
+
+    /**
      * The values passed by the hidden element
      *
      * @var array
@@ -107,7 +115,24 @@ class HTML_QuickForm_LiveSearch_Select extends HTML_QuickForm_text
                                     );
         }
     }
-
+    /**
+     * Gets the element's value
+     *
+     * @param    mixed   Element's value
+     * @access   public
+     */
+    function getValue($internal = NULL)
+    {
+        if ($this->_flagFrozen) {
+            if ($internal) {
+                return $this->_value;
+            } else {
+                return $this->_hidden_value;
+            }
+        } else {
+            return $this->_hidden_value;
+        }
+    }
     /**
      * Sets the options for the LiveSearch_Select input text element
      *
@@ -121,8 +146,28 @@ class HTML_QuickForm_LiveSearch_Select extends HTML_QuickForm_text
     } // end func setOptions
 
     // }}}
-    // {{{ toHtml()
+    // {{{ getFrozenHtml()
 
+    /**
+     * Returns the value of field without HTML tags
+     *
+     * @since     1.0
+     * @access    public
+     * @return    string
+     */
+    function getFrozenHtml()
+    {
+        $value = $this->getValue(true);
+        $id = $this->getAttribute('id');
+        return ('' != $value ? htmlspecialchars($value): '&nbsp;').'<input' . $this->_getAttrString(array(
+                       'type'  => 'hidden',
+                       'name'  => $this->realName,
+                       'value' => $this->getValue()
+                   ) + (isset($id)? array('id' => $id): array())) . ' />';
+    } //end func getFrozenHtml
+
+    // }}}
+    // {{{ toHtml()
     /**
      * Returns Html for the LiveSearch_Select input text element
      *
@@ -131,7 +176,7 @@ class HTML_QuickForm_LiveSearch_Select extends HTML_QuickForm_text
      */
     function toHtml()
     {
-        $oldName = $this->getName();
+        $this->realName = $this->getName();
         $liveform = '';
         $scriptLoad = '';
         $style = 'display: block;';
@@ -140,13 +185,9 @@ class HTML_QuickForm_LiveSearch_Select extends HTML_QuickForm_text
         $listyle = ' class="listyle" ';
         $zeroLength = 0;
         $this->updateAttributes(array(
-                                      'name' => $this->getPrivateName($oldName),
+                                      'name' => $this->getPrivateName($this->realName)
                                      )
                                 );
-//         if (isset($this->_options['getparameters']) )
-//             $getParam = "&".$this->_options['getparameters']."&class=".$this->getName()."ObjLS";
-//         else
-//             $getParam = "&class=".$this->getName()."ObjLS";
         if (isset($this->_options['style']) AND $this->_options['style'] != '') {
             $style = ' style="'.$this->_options['style'].'" ';
         }
@@ -165,7 +206,7 @@ class HTML_QuickForm_LiveSearch_Select extends HTML_QuickForm_text
             $zeroLength = 0;
         }
         $this->updateAttributes(array(
-                                      'onkeyup' => 'javascript:liveSearchKeyPress(this, event, \''.$this->getName().'Result\', \'target_'.$this->_options['elementId'].'\', \''.$this->_options['elementId'].'\', \''.$oldName.'\', '.$zeroLength.');',//'javascript:'.$this->getName().'ObjLS.liveSearchKeyPress(this, event);disable();',
+                                      'onkeyup' => 'javascript:liveSearchKeyPress(this, event, \''.$this->getName().'Result\', \'target_'.$this->_options['elementId'].'\', \''.$this->_options['elementId'].'\', \''.$this->realName.'\', '.$zeroLength.');',//'javascript:'.$this->getName().'ObjLS.liveSearchKeyPress(this, event);disable();',
                                       'onblur' => 'javascript:liveSearchHide(\''.$this->getName().'Result\');',
                                       'id' => $this->_options['elementId'],
                                       'style' => $style,
@@ -173,7 +214,7 @@ class HTML_QuickForm_LiveSearch_Select extends HTML_QuickForm_text
                                       )
                                );
         if ($this->_flagFrozen) {
-            $liveform = '';
+            return $this->getFrozenHtml();
         } else {
             $liveform .= '
 <div'.$divstyle.'id="'.$this->getName().'Result">
@@ -273,7 +314,7 @@ callback.'.$this->_options['elementId'].' = function(result) {
     var out = "<?xml version=\'1.0\' encoding=\'utf-8\'  ?><ul class=\"outerUl\" >";
     for(var i in result) {
         if (i != \'______array\') {
-            out += "<li class=\"outerLi\"><a href=\"#\" value=\""+i+"\" text=\""+result[i]+"\" onmouseover=\"liveSearchHover(this);\" onmousedown=\"liveSearchClicked(this.getAttribute(\'value\'), this.getAttribute(\'text\'), \''.$this->_options['elementId'].'\', \''.$oldName.'\');\">"+result[i]+"</a></li>";
+            out += "<li class=\"outerLi\"><a href=\"#\" value=\""+i+"\" text=\""+result[i]+"\" onmouseover=\"liveSearchHover(this);\" onmousedown=\"liveSearchClicked(this.getAttribute(\'value\'), this.getAttribute(\'text\'), \''.$this->_options['elementId'].'\', \''.$this->realName.'\');\">"+result[i]+"</a></li>";
         }
     }
     out += "</ul>";
@@ -296,7 +337,7 @@ callback.'.$this->_options['elementId'].' = function(result) {
                         define('HTML_QUICKFORM_JS_INIT_EXISTS', true);
                     }
             $scriptLoad .= '
-<input type="hidden" name="'.$oldName.'" id="'.$oldName.'" value="'.$this->_hidden_value.'">'."\n";
+<input type="hidden" name="'.$this->realName.'" id="'.$this->realName.'" value="'.$this->_hidden_value.'">'."\n";
 
 
         }
