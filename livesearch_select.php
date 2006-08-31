@@ -293,7 +293,7 @@ class HTML_QuickForm_LiveSearch_Select extends HTML_QuickForm_text
 }
 // -->
 </style>
-<script type='text/javascript' src="auto_server.php?client=Util,main,dispatcher,httpclient,request,json,loading,QfLiveSearch&stub=livesearch"></script>
+<script type='text/javascript' src="auto_server.php?client=Util,main,dispatcher,httpclient,request,json,loading,queues,QfLiveSearch&stub=livesearch"></script>
 <script type='text/javascript'>//<![CDATA[
 callback = {};
 function searchRequest(searchBox, callfunc) {

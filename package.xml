@@ -16,20 +16,18 @@ This type of livesearch is useful when you have a form with a dropdown list with
         </maintainer>
     </maintainers>
     <release>
-        <version>0.3.0</version>
-        <date>2006-06-23</date>
+        <version>0.3.1</version>
+        <date>2006-08-31</date>
         <license>PHP License 3.0</license>
         <state>beta</state>
         <notes>
 Changes:
-Solved bug with frozen element.
-* todo: Do not reset the value when the key is a button that do not alter the text.
-* todo: Set up the options of an alternative element when jscript disabled
+Added compatibility to new HTML_AJAX 0.5.0 release.
         </notes>
         <deps>
             <dep type="pkg" rel="has" optional="no">PEAR</dep>
             <dep type="pkg" rel="gt" version="3.2.4" optional="no">HTML_QuickForm</dep>
-            <dep type="pkg" rel="gt" version="0.3" optional="no">HTML_AJAX</dep>
+            <dep type="pkg" rel="gt" version="0.4.1" optional="no">HTML_AJAX</dep>
         </deps>
         <provides type="class" name="HTML_QuickForm_LiveSearch_Select" extends="HTML_QuickForm_text" />
         <provides type="function" name="HTML_QuickForm_LiveSearch_Select::setValue" />
@@ -71,6 +69,18 @@ Solved bug with frozen element.
         </filelist>
     </release>
     <changelog>
+        <release>
+            <version>0.3.0</version>
+            <date>2006-06-23</date>
+            <license>PHP License 3.0</license>
+            <state>beta</state>
+            <notes>
+Changes:
+Solved bug with frozen element.
+* todo: Do not reset the value when the key is a button that do not alter the text.
+* todo: Set up the options of an alternative element when jscript disabled
+            </notes>
+        </release>
         <release>
             <version>0.2.0</version>
             <date>2006-05-25</date>
