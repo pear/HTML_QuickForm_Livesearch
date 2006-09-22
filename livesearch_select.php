@@ -189,7 +189,7 @@ class HTML_QuickForm_LiveSearch_Select extends HTML_QuickForm_text
                                      )
                                 );
         if (isset($this->_options['style']) AND $this->_options['style'] != '') {
-            $style = ' style="'.$this->_options['style'].'" ';
+            $style = $this->_options['style'];
         }
         if (isset($this->_options['divstyle']) AND $this->_options['divstyle'] != '') {
             $divstyle =  ' class="'.$this->_options['divstyle'].'" ';
