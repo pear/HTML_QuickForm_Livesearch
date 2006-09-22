@@ -184,6 +184,7 @@ class HTML_QuickForm_LiveSearch_Select extends HTML_QuickForm_text
         $ulstyle = ' class="ulstyle" ';
         $listyle = ' class="listyle" ';
         $zeroLength = 0;
+        $printStyle = 1;
         $this->updateAttributes(array(
                                       'name' => $this->getPrivateName($this->realName)
                                      )
@@ -205,12 +206,15 @@ class HTML_QuickForm_LiveSearch_Select extends HTML_QuickForm_text
         } else {
             $zeroLength = 0;
         }
+        if (isset($this->_options['printStyle']) AND $this->_options['printStyle'] != 1) {
+            $printStyle = 0;
+        }
         $this->updateAttributes(array(
                                       'onkeyup' => 'javascript:liveSearchKeyPress(this, event, \''.$this->getName().'Result\', \'target_'.$this->_options['elementId'].'\', \''.$this->_options['elementId'].'\', \''.$this->realName.'\', '.$zeroLength.');',//'javascript:'.$this->getName().'ObjLS.liveSearchKeyPress(this, event);disable();',
                                       'onblur' => 'javascript:liveSearchHide(\''.$this->getName().'Result\');',
                                       'id' => $this->_options['elementId'],
-                                      'style' => $style,
-                                      'autocomplete' => 'off'
+                                      'style' => $style
+//                                       'autocomplete' => 'off'
                                       )
                                );
         if ($this->_flagFrozen) {
@@ -223,7 +227,8 @@ class HTML_QuickForm_LiveSearch_Select extends HTML_QuickForm_text
     </ul>
 </div>';
             if (!defined('HTML_QUICKFORM_LIVESEARCH_EXISTS')) {
-                $scriptLoad = <<<EOS
+                if ($printStyle != 0) {
+                    $scriptLoad = <<<EOS
 <style type="text/css">
 <!--
 .divstyle {
@@ -293,7 +298,10 @@ class HTML_QuickForm_LiveSearch_Select extends HTML_QuickForm_text
 }
 // -->
 </style>
-<script type='text/javascript' src="auto_server.php?client=Util,main,dispatcher,httpclient,request,json,loading,queues,QfLiveSearch&stub=livesearch"></script>
+EOS;
+                }
+                $scriptLoad .= <<<EOS
+<script type='text/javascript' src="auto_server.php?client=Util,main,dispatcher,httpclient,request,json,loading,queues,QfLiveSearch&amp;stub=livesearch"></script>
 <script type='text/javascript'>//<![CDATA[
 callback = {};
 function searchRequest(searchBox, callfunc) {
@@ -337,7 +345,7 @@ callback.'.$this->_options['elementId'].' = function(result) {
                         define('HTML_QUICKFORM_JS_INIT_EXISTS', true);
                     }
             $scriptLoad .= '
-<input type="hidden" name="'.$this->realName.'" id="'.$this->realName.'" value="'.$this->_hidden_value.'">'."\n";
+<input type="hidden" name="'.$this->realName.'" id="'.$this->realName.'" value="'.$this->_hidden_value.'" />'."\n";
 
 
         }

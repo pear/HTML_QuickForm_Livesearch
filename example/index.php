@@ -13,14 +13,15 @@ $form->addElement('header', null, 'QuickForm example');
 $form->addElement('livesearch_select', 'Nome', 'Example: Live Select, <br>select a name and return an ID <br>(useful for dropdown lists)',
                  array(
                       'elementId' => 'search', //element id
-                      'callback' => array('Test', 'getTestName'),//callback function to retrieve ID from selection
+                      'callback' => array('Test', 'getTestName'),//callback function to retrieve value from ID selection
 //                       'dbh' => $db,//optional handler for callback function
                       'style' => '',//optional class for style not set or '' ==> default
                       'divstyle' => '',//optional class for style not set or '' ==> default
                       'ulstyle' => '',//optional class for style not set or '' ==> default
                       'listyle' => '',//optional class for style not set or '' ==> default
                       'searchZeroLength' => 1, //enable the search request with 0 length keyword
-                      'buffer' => 350 //set the interval single buffer send time (ms)
+                      'buffer' => 350, //set the interval single buffer send time (ms)
+                      'printStyle' => 0 //the default style will not be rendered, you should put it in your style.css(XHTML fix)
                       ),
                       array('size' => '50')
                   );
