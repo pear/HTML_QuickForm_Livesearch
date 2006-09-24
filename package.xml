@@ -16,13 +16,16 @@ This type of livesearch is useful when you have a form with a dropdown list with
         </maintainer>
     </maintainers>
     <release>
-        <version>0.3.1</version>
-        <date>2006-08-31</date>
+        <version>0.3.2</version>
+        <date>2006-09-24</date>
         <license>PHP License 3.0</license>
         <state>beta</state>
         <notes>
 Changes:
-Added compatibility to new HTML_AJAX 0.5.0 release.
+Added option to print or not the default css style, so you can put it in your css.
+Added autocomplete On/Off option
+The setValue Function use the callback, if the callback is not set, the function set the raw value.
+Fixed some HTML code for XHTML compatibilty
         </notes>
         <deps>
             <dep type="pkg" rel="has" optional="no">PEAR</dep>
@@ -69,6 +72,16 @@ Added compatibility to new HTML_AJAX 0.5.0 release.
         </filelist>
     </release>
     <changelog>
+        <release>
+            <version>0.3.1</version>
+            <date>2006-08-31</date>
+            <license>PHP License 3.0</license>
+            <state>beta</state>
+            <notes>
+Changes:
+Added compatibility to new HTML_AJAX 0.5.0 release.
+            </notes>
+        </release>
         <release>
             <version>0.3.0</version>
             <date>2006-06-23</date>

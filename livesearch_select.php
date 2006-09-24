@@ -113,6 +113,11 @@ class HTML_QuickForm_LiveSearch_Select extends HTML_QuickForm_text
                                         'value' => $this->_value
                                         )
                                     );
+        } else {
+            $this->updateAttributes(array(
+                                        'value' => $value
+                                        )
+                                    );
         }
     }
     /**
@@ -209,12 +214,17 @@ class HTML_QuickForm_LiveSearch_Select extends HTML_QuickForm_text
         if (isset($this->_options['printStyle']) AND $this->_options['printStyle'] != 1) {
             $printStyle = 0;
         }
+        if (isset($this->_options['autoComplete']) AND $this->_options['autoComplete'] != 0) {
+            $this->updateAttributes(array(
+                                            'autocomplete' => 'off'
+                                        )
+                                    );
+        }
         $this->updateAttributes(array(
                                       'onkeyup' => 'javascript:liveSearchKeyPress(this, event, \''.$this->getName().'Result\', \'target_'.$this->_options['elementId'].'\', \''.$this->_options['elementId'].'\', \''.$this->realName.'\', '.$zeroLength.');',//'javascript:'.$this->getName().'ObjLS.liveSearchKeyPress(this, event);disable();',
                                       'onblur' => 'javascript:liveSearchHide(\''.$this->getName().'Result\');',
                                       'id' => $this->_options['elementId'],
                                       'style' => $style
-//                                       'autocomplete' => 'off'
                                       )
                                );
         if ($this->_flagFrozen) {

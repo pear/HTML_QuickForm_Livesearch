@@ -19,9 +19,10 @@ $form->addElement('livesearch_select', 'Nome', 'Example: Live Select, <br>select
                       'divstyle' => '',//optional class for style not set or '' ==> default
                       'ulstyle' => '',//optional class for style not set or '' ==> default
                       'listyle' => '',//optional class for style not set or '' ==> default
-                      'searchZeroLength' => 1, //enable the search request with 0 length keyword
+                      'searchZeroLength' => 1, //enable the search request with 0 length keyword(Default 0)
                       'buffer' => 350, //set the interval single buffer send time (ms)
-                      'printStyle' => 0 //the default style will not be rendered, you should put it in your style.css(XHTML fix)
+                      'printStyle' => 1, //anything != 0 will render css inline(Default 1), 0 => the default style will not be rendered, you should put it in your style.css(XHTML fix)
+                      'autoComplete' => 1 //if 0 the autocomplete attribute will not be set. Default not set;
                       ),
                       array('size' => '50')
                   );

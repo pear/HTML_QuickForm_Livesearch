@@ -24,7 +24,7 @@ class Test
                                 5 => 'Blueberry-2'
                                 );
         if ($id > 0) {
-            return $livesearch2[$id];
+            return $livesearch[$id];
         }
     }
 }
