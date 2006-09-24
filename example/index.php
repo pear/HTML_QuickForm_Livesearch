@@ -38,6 +38,10 @@ $form->addElement('text', 'required_field', 'errorTest', 'Some data:');
 $form->addElement('submit', null, 'View', array('id'=>'submit'));
 $form->addRule('required_field', 'Data required', 'required', null, 'server');
 $form->addRule('Nome', 'Data required', 'required', null, 'server');
+//example set default value.
+$el = $form->getElement('Nome2');
+$el->setValue(2);
+
 if ($form->validate()) {
   echo"<pre>";print_r($_POST);echo"</pre>";
   $form->freeze();
