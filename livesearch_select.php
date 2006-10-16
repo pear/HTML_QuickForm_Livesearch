@@ -246,8 +246,6 @@ class HTML_QuickForm_LiveSearch_Select extends HTML_QuickForm_text
     background-color: #aaa;
     z-index: 1;
     min-width: 140px;
-    margin: 1px 0px 2px 0px;
-    padding: 0px;
     float:left;
     clear:left;
     background: url(shadowAlpha.png) no-repeat bottom right !important;
@@ -269,40 +267,30 @@ class HTML_QuickForm_LiveSearch_Select extends HTML_QuickForm_text
 .listyle {
     text-indent: -20px;
     z-index: 1;
-    padding: 0px 15px 3px 20px;
+    padding-right: 15px;
     padding-bottom: 2px;
     padding-top: 2px;
+    padding-left: 20px;
     line-height:15px;
     margin-bottom: 0px;
 }
 .outerUl {
     list-style-type: none;
     position: relative;
-    right: 1px;
     z-index: 1;
-    margin: 0px;
-    padding: 0px;
     background-color: #FFFFFF;
     color: inherit;
     bottom:6px;
     right: 6px;
     border: 1px solid #999999;
-    padding:4px;
-    margin: 0px 0px 0px 0px;
     text-indent: -20px;
-    padding: 0px 15px 3px 20px;
-    margin-bottom: -5px;
-    margin-top: 0px;
-    padding-top: 0px;
     margin: 0px;
     padding: 0px;
 }
 .outerLi {
     text-indent: -20px;
     z-index: 1;
-    padding: 0px 15px 3px 20px;
-    padding-bottom: 2px;
-    padding-top: 2px;
+    padding: 2px 15px 2px 20px;
     line-height:15px;
     margin-bottom: 0px;
 }
