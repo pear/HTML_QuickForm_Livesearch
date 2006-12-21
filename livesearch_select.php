@@ -233,7 +233,7 @@ class HTML_QuickForm_LiveSearch_Select extends HTML_QuickForm_text
             $liveform .= '
 <div'.$divstyle.'id="'.$this->getName().'Result">
     <ul'.$ulstyle.'id="target_'.$this->_options['elementId'].'">
-        <li'.$listyle.'> </li>
+        <li'.$listyle.'>&nbsp;</li>
     </ul>
 </div>';
             if (!defined('HTML_QUICKFORM_LIVESEARCH_EXISTS')) {
@@ -317,13 +317,13 @@ EOS;
 callback.'.$this->_options['elementId'].' = function(result) {
     var  res = document.getElementById(\''.$this->getName().'Result\');
     res.style.display = "block";
-    var out = "<?xml version=\'1.0\' encoding=\'utf-8\'  ?><ul class=\"outerUl\" >";
+    var out = "<ul class=\"outerUl\" >";
     for(var i in result) {
         if (i != \'______array\') {
-            out += "<li class=\"outerLi\"><a href=\"#\" value=\""+i+"\" text=\""+result[i]+"\" onmouseover=\"liveSearchHover(this);\" onmousedown=\"liveSearchClicked(this.getAttribute(\'value\'), this.getAttribute(\'text\'), \''.$this->_options['elementId'].'\', \''.$this->realName.'\');\">"+result[i]+"</a></li>";
+            out += "<li class=\"outerLi\"><a href=\"#\" value=\""+i+"\" text=\""+result[i]+"\" onmouseover=\"liveSearchHover(this);\" onmousedown=\"liveSearchClicked(this.getAttribute(\'value\'), this.getAttribute(\'text\'), \''.$this->_options['elementId'].'\', \''.$this->realName.'\');\">"+result[i]+"<\/a><\/li>";
         }
     }
-    out += "</ul>";
+    out += "<\/ul>";
     document.getElementById(\'target_'.$this->_options['elementId'].'\').innerHTML = out;
 }
 //]]>
