@@ -254,7 +254,7 @@ class HTML_QuickForm_LiveSearch_Select extends HTML_QuickForm_text
     padding: 0px;
     display: none;
 }
-
+* html .divstyle { width: 140px;}
 .ulstyle {
     list-style-type: none;
     position: relative;
