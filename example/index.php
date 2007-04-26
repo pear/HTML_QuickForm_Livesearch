@@ -22,7 +22,8 @@ $form->addElement('livesearch_select', 'Nome', 'Example: Live Select, <br>select
                       'searchZeroLength' => 1, //enable the search request with 0 length keyword(Default 0)
                       'buffer' => 350, //set the interval single buffer send time (ms)
                       'printStyle' => 1, //anything != 0 will render css inline(Default 1), 0 => the default style will not be rendered, you should put it in your style.css(XHTML fix)
-                      'autoComplete' => 1 //if 0 the autocomplete attribute will not be set. Default not set;
+                      'autoComplete' => 1, //if 0 the autocomplete attribute will not be set. Default not set;
+                      'autoserverPath' => '' //path to auto_server.php file with trailing slash
                       ),
                       array('size' => '50')
                   );
@@ -34,7 +35,7 @@ $form->addElement('livesearch_select', 'Nome2', 'Example2: Live Select, <br>sele
                       ),
                   'size=30'
                   );
-$form->addElement('text', 'required_field', 'errorTest', 'Some data:');
+$form->addElement('text', 'required_field', '[errorTest]Some data:');
 $form->addElement('submit', null, 'View', array('id'=>'submit'));
 $form->addRule('required_field', 'Data required', 'required', null, 'server');
 $form->addRule('Nome', 'Data required', 'required', null, 'server');
