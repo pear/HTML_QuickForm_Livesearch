@@ -23,7 +23,7 @@ $form->addElement('livesearch_select', 'Nome', 'Example: Live Select, <br>select
                       'buffer' => 350, //set the interval single buffer send time (ms)
                       'printStyle' => 1, //anything != 0 will render css inline(Default 1), 0 => the default style will not be rendered, you should put it in your style.css(XHTML fix)
                       'autoComplete' => 1, //if 0 the autocomplete attribute will not be set. Default not set;
-                      'autoserverPath' => '' //path to auto_server.php file with trailing slash
+                      'autoserverPath' => '' //path to auto_server.php file with trailing slash NOTE: check path for all files included in autoserver.php
                       ),
                       array('size' => '50')
                   );
@@ -39,10 +39,11 @@ $form->addElement('text', 'required_field', '[errorTest]Some data:');
 $form->addElement('submit', null, 'View', array('id'=>'submit'));
 $form->addRule('required_field', 'Data required', 'required', null, 'server');
 $form->addRule('Nome', 'Data required', 'required', null, 'server');
-//example set default value.
-$el = $form->getElement('Nome2');
-$el->setValue(2);
-
+//example set default value only if form is not submitted
+if (!isset($_POST['Nome2']) ) {
+    $el = $form->getElement('Nome2');
+    $el->setValue(2);
+}
 if ($form->validate()) {
   echo"<pre>";print_r($_POST);echo"</pre>";
   $form->freeze();

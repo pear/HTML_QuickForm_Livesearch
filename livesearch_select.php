@@ -214,9 +214,14 @@ class HTML_QuickForm_LiveSearch_Select extends HTML_QuickForm_text
         if (isset($this->_options['printStyle']) AND $this->_options['printStyle'] != 1) {
             $printStyle = 0;
         }
+        if (isset($this->_options['autoserverPath']) AND $this->_options['autoserverPath'] != '') {
+            $autoserverPath = $this->_options['autoserverPath'];
+        } else {
+            $autoserverPath = '';
+        }
         if (isset($this->_options['autoComplete']) AND $this->_options['autoComplete'] != 0) {
             $this->updateAttributes(array(
-                                            'autocomplete' => 'off'
+                                        'autocomplete' => 'off'
                                         )
                                     );
         }
@@ -299,7 +304,7 @@ class HTML_QuickForm_LiveSearch_Select extends HTML_QuickForm_text
 EOS;
                 }
                 $scriptLoad .= <<<EOS
-<script type='text/javascript' src="auto_server.php?client=Util,main,dispatcher,httpclient,request,json,loading,queues,QfLiveSearch&amp;stub=livesearch"></script>
+<script type='text/javascript' src="{$autoserverPath}auto_server.php?client=Util,main,dispatcher,httpclient,request,json,loading,queues,QfLiveSearch&amp;stub=livesearch"></script>
 <script type='text/javascript'>//<![CDATA[
 callback = {};
 function searchRequest(searchBox, callfunc) {

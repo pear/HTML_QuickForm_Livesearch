@@ -16,7 +16,7 @@
 // | Bitflux GmbH <devel@bitflux.ch>                                      |
 // | http://blog.bitflux.ch/wiki/LiveSearch/#Source_Code                  |
 // +----------------------------------------------------------------------+
-// $Id: live.js,v 1.3 2006-05-25 09:24:41 thesee Exp $
+// $Id: live.js,v 1.1 2007-08-29 08:58:12 thesee Exp $
 
 function liveSearchHover(el)
 {
