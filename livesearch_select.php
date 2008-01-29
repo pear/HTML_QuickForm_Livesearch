@@ -299,7 +299,7 @@ class HTML_QuickForm_LiveSearch_Select extends HTML_QuickForm_text
     line-height:15px;
     margin-bottom: 0px;
 }
-// -->
+-->
 </style>
 EOS;
                 }
