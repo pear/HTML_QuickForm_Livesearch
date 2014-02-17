@@ -1,0 +1,28 @@
+{
+    "authors": [
+        {
+            "email": "thesee@fastwebnet.it",
+            "name": "Giuseppe Dessi",
+            "role": "Lead"
+        }
+    ],
+    "autoload": {
+        "classmap": [
+            "./"
+        ]
+    },
+    "description": "More info available on: http://pear.php.net/package/HTML_QuickForm_Livesearch",
+    "license": "PHP License 3.0",
+    "name": "pear/html_quickform_livesearch",
+    "support": {
+        "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=HTML_QuickForm_Livesearch",
+        "source": "https://github.com/pear/HTML_QuickForm_Livesearch"
+    },
+    "type": "library",
+    "require": {
+        "pear/pear_exception": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    }
+}
